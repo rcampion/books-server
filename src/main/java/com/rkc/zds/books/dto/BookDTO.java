@@ -27,6 +27,10 @@ public class BookDTO {
 	@Column(name = "Author", nullable = true, length = 20)
 	private String author;
 
+	@Size(min = 0, max = 45)
+	@Column(name = "Category", nullable = true)
+	private int category;
+	
 	public int getId() {
 		return id;
 	}
@@ -49,5 +53,14 @@ public class BookDTO {
 
 	public void setAuthor(String author) {
 		this.author = author;
-	}	
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+	
 }
