@@ -1,45 +1,61 @@
 use books;
 
--- drop table Book;
+drop table Book;
 
 create table Book(
-id int,
+id int AUTO_INCREMENT PRIMARY KEY,
 Title varchar(45),
 Author varchar(45),
-PRIMARY KEY ( id )
+Category int
 );
 
 INSERT INTO `books`.`Book`
-(`id`,
-`Title`,
-`Author`
+(`Title`,
+`Author`,
+`Category`
 )
 VALUES
-(1,
+(
 "Clean Code",
-"Robert Cecil Martin");
+"Robert Cecil Martin",
+1);
 
 INSERT INTO `books`.`Book`
-(`id`,
+(
 `Title`,
-`Author`
+`Author`,
+`Category`
 )
 VALUES
-(2,
+(
 "Code Complete",
-"Steve McConnell");
+"Steve McConnell",
+2);
 
 INSERT INTO `books`.`Book`
-(`id`,
+(
 `Title`,
-`Author`
+`Author`,
+`Category`
 )
 VALUES
-(3,
+(
 "Refactoring",
-"Martin Fowler, Kent Beck");
+"Martin Fowler, Kent Beck",
+1);
+INSERT INTO `books`.`Book`
+(
+`Title`,
+`Author`,
+`Category`
+)
+VALUES
+(
+"Refactoring 2",
+"Martin Fowler, Kent Beck",
+1);
 
--- drop table Customer;
+drop table Customer;
 
 create table Customer(
 id int,
@@ -61,7 +77,7 @@ VALUES
 (2,
 "Paul Fredette");
 
--- drop table CustomerBook;
+drop table CustomerBook;
 
 create table CustomerBook(
 id int,
