@@ -1,0 +1,11 @@
+{
+  "realm": "zdslogic",
+  "auth-server-url": "https://www.zdslogic.com/keycloak/auth/",
+  "ssl-required": "external",
+  "resource": "newClient",
+  "credentials": {
+    "secret": "newClientSecret"
+  },
+  "use-resource-role-mappings" : false,
+  "confidential-port": 0
+}

@@ -1,0 +1,15 @@
+server: 
+  port: 8083
+  servlet: 
+    context-path: /books-server
+
+####### resource server configuration properties
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://www.zdslogic.com/keycloak/auth/realms/zdslogic
+          jwk-set-uri: https://www.zdslogic.com/keycloak/auth/realms/zdslogic/protocol/openid-connect/certs
+#          issuer-uri: http://localhost:18080/auth/realms/zdslogic
+#          jwk-set-uri: http://localhost:18080/auth/protocol/openid-connect/certs
