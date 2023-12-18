@@ -32,7 +32,7 @@
 		<slf4j.api.version>1.7.30</slf4j.api.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.zdslogic.server.ZdsLogicCommunicationsServerApp</start-class>
+		<start-class>com.zdslogic.server.BooksServerApp</start-class>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
 		<lombok.version>1.18.20</lombok.version>
