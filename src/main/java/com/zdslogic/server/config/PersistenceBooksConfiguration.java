@@ -37,8 +37,7 @@ public class PersistenceBooksConfiguration {
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		// dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("books_user");
-		//dataSource.setPassword("ChangeIt");
-		dataSource.setPassword("Admin8246+");
+		dataSource.setPassword("ChangeIt");
 		dataSource.setUrl(
 				"jdbc:mysql://localhost:3306/books?createDatabaseIfNotExist=true&serverTimezone=UTC&useLegacyDatetimeCode=false");
 
