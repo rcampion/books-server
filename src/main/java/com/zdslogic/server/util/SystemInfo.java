@@ -1,4 +1,4 @@
-package com.zdslogic.server.utils;
+package com.zdslogic.server.util;
 
 import java.io.File;
 import java.text.NumberFormat;

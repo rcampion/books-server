@@ -1,4 +1,4 @@
-package com.zdslogic.server.rsql;
+package com.zdslogic.server.util.rsql;
 
 import org.springframework.data.jpa.domain.Specification;
 

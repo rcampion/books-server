@@ -1,4 +1,4 @@
-package com.zdslogic.server.rsql;
+package com.zdslogic.server.util.rsql;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.zdslogic.server.rsql;
+package com.zdslogic.server.util.rsql;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,14 +12,18 @@ import org.springframework.data.jpa.domain.Specification;
 
 import cz.jirutka.rsql.parser.ast.ComparisonOperator;
 
-public class GenericRsqlSpecificationSave<T> implements Specification<T> {
+import org.springframework.data.jpa.domain.Specification;
+
+import cz.jirutka.rsql.parser.ast.ComparisonOperator;
+
+public class GenericRsqlSpecification<T> implements Specification<T> {
 
 	private static final long serialVersionUID = 689863829277028697L;
 	private String property;
 	private ComparisonOperator operator;
 	private List<String> arguments;
 
-	public GenericRsqlSpecificationSave(final String property, final ComparisonOperator operator,
+	public GenericRsqlSpecification(final String property, final ComparisonOperator operator,
 			final List<String> arguments) {
 		super();
 		this.property = property;
@@ -70,6 +74,7 @@ public class GenericRsqlSpecificationSave<T> implements Specification<T> {
 		}
 
 		return null;
+
 	}
 
 	// === private

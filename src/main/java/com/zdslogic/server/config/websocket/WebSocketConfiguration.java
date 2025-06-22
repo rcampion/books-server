@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-import com.zdslogic.server.utils.SystemInfo;
+import com.zdslogic.server.util.SystemInfo;
 
 @Configuration
 @ConfigurationProperties

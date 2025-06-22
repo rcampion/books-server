@@ -29,9 +29,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zdslogic.server.plugins.books.domain.AuthorEntity;
 import com.zdslogic.server.plugins.books.service.AuthorService;
-//import com.zdslogic.server.contacts.service.ContactService;
-import com.zdslogic.server.rsql.CustomRsqlVisitor;
-import com.zdslogic.server.utils.SystemUtils;
+import com.zdslogic.server.util.SystemUtils;
+import com.zdslogic.server.util.rsql.CustomRsqlVisitor;
 
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
