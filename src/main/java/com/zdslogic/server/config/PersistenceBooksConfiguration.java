@@ -23,32 +23,50 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "com.zdslogic.server.books" }, excludeFilters = {
+@ComponentScan(basePackages = { "com.zdslogic.server.plugins.books" }, excludeFilters = {
 		@ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION) })
-@EnableJpaRepositories(basePackages = "com.zdslogic.server.books.repo", entityManagerFactoryRef = "booksEntityManager", transactionManagerRef = "booksTransactionManager")
+@EnableJpaRepositories(basePackages = "com.zdslogic.server.plugins.books.repo", entityManagerFactoryRef = "booksEntityManager", transactionManagerRef = "booksTransactionManager")
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
 public class PersistenceBooksConfiguration {
 
+/*	
 	@Bean
 	public DataSource booksDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		// dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		//dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("books_user");
-		dataSource.setPassword("ChangeIt");
+		dataSource.setPassword("Admin8246+");
+		// dataSource.setUrl("jdbc:mysql://localhost:3306/auth?createDatabaseIfNotExist=true");
 		dataSource.setUrl(
 				"jdbc:mysql://localhost:3306/books?createDatabaseIfNotExist=true&serverTimezone=UTC&useLegacyDatetimeCode=false");
 
 		return dataSource;
 	}
+*/
+	
+	@Bean
+	public DataSource booksDataSource() {
+		
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
+		dataSource.setDriverClassName("org.postgresql.Driver");
+
+		dataSource.setUsername("books_user");
+		dataSource.setPassword("ChangeIt");
+		// dataSource.setUrl("jdbc:mysql://localhost:3306/auth?createDatabaseIfNotExist=true");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/books");
+		
+		return dataSource;
+	}
+		
 	@Bean(name = "booksEntityManager")
 	public LocalContainerEntityManagerFactoryBean booksEntityManager() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(booksDataSource());
-		em.setPackagesToScan(new String[] { "com.zdslogic.server.books.domain" });
+		em.setPackagesToScan(new String[] { "com.zdslogic.server.plugins.books.domain" });
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
@@ -56,7 +74,8 @@ public class PersistenceBooksConfiguration {
 
 		return em;
 	}
-
+	
+/*
 	@Bean
 	public JpaVendorAdapter booksJpaVendorAdapter() {
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
@@ -65,7 +84,17 @@ public class PersistenceBooksConfiguration {
 		hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
 		return hibernateJpaVendorAdapter;
 	}
-
+*/
+	
+	@Bean
+	public JpaVendorAdapter booksJpaVendorAdapter() {
+		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+		hibernateJpaVendorAdapter.setShowSql(true);
+		hibernateJpaVendorAdapter.setGenerateDdl(true);
+		hibernateJpaVendorAdapter.setDatabase(Database.POSTGRESQL);
+		return hibernateJpaVendorAdapter;
+	}
+	
 	@Bean
 	public PlatformTransactionManager booksTransactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -81,12 +110,38 @@ public class PersistenceBooksConfiguration {
 	/*
 	 * @Bean PasswordEncoder getEncoder() { return new BCryptPasswordEncoder(); }
 	 */
+	
+/*	
 	Properties additionalProperties() {
-		Properties properties = new Properties();
-		/// properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		Properties properties = new Properties();		
+		//properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");		
+		//properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 
 		return properties;
 	}
+*/
+	
+	final Properties hibernateProperties() {
+		final Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		//hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		// hibernateProperties.setProperty("hibernate.dialect",
+		// PostgreSQLDialect.class.getName());
+		// hibernateProperties.setProperty("hibernate.dialect",
+		// "org.hibernate.dialect.MySQL5Dialect");
+		hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+		return hibernateProperties;
+	}
+
+	Properties additionalProperties() {
+		Properties properties = new Properties();
+		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		//properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		return properties;
+	}
+	
 }
