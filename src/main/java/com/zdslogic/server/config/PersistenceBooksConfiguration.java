@@ -55,7 +55,7 @@ public class PersistenceBooksConfiguration {
 		dataSource.setDriverClassName("org.postgresql.Driver");
 
 		dataSource.setUsername("books_user");
-		dataSource.setPassword("ChangeIt");
+		dataSource.setPassword("Admin8246+");
 		// dataSource.setUrl("jdbc:mysql://localhost:3306/auth?createDatabaseIfNotExist=true");
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/books");
 		
